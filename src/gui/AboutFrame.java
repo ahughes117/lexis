@@ -20,7 +20,9 @@ public class AboutFrame extends GUI {
     
     public AboutFrame() {
         instanceAlive = true;
+        
         initComponents();
+        
         this.addWindowListener(new WindowAdapter() {
 
             public void windowClosing(WindowEvent e) {

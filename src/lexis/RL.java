@@ -13,6 +13,7 @@ public class RL {
     private ArrayList<Rating> ratingL;
     private int left;
     private int right;
+    private String results;
 
     /**
      * Constructor initializing functionality
@@ -38,8 +39,13 @@ public class RL {
             ratingT.add(tmp);
         }
     }
+    
+    public void process(String anInput) {
+        rateInput(cleanChars(anInput));
+        printResults();
+    }
 
-    public String cleanChars(String anInput) {
+    private String cleanChars(String anInput) {
         char[] input = anInput.toCharArray();
         String output;
         StringBuilder sb = new StringBuilder();
@@ -57,7 +63,7 @@ public class RL {
         return output;
     }
 
-    public void rateInput(String anInput) {
+    private void rateInput(String anInput) {
         ratingL = new ArrayList();
         char[] inputC = anInput.toCharArray();
 
@@ -92,17 +98,29 @@ public class RL {
         }
     }
 
-    public void printResults() {
+    private void printResults() {
         Iterator it = ratingT.iterator();
 
+        results = "";
         while (it.hasNext()) {
             Rating tmp = (Rating) it.next();
             if (tmp.getCounter() != 0) {
-                System.out.println(tmp.getCharacter() + ": " + tmp.getCounter());
+                results += tmp.getCharacter() + ": " + tmp.getCounter() + "\n";
             }
         }
-        System.out.println("Right Hand: " + right);
-        System.out.println("Left Hand: " + left);
-        System.out.println("Size: " + ratingL.size());
+        results += "\nRight Hand: " + right + "\n";
+        results += "Left Hand: " + left + "\n";
+    }
+
+    public int getLeft() {
+        return left;
+    }
+
+    public String getResults() {
+        return results;
+    }
+
+    public int getRight() {
+        return right;
     }
 }
