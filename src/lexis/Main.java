@@ -34,8 +34,12 @@ public class Main {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-        Lexis util = new Lexis("abcdefghijklmnopqrstuvwxyz");
-        System.out.println(util.cleanChars("my name i1s al23e23x/ hughes and i am proud of myself for developing nonsense"));
+        RL util = new RL("123456!@#$%^QWERTASDFGZXCVBqwertasdfgzxcvb", 
+                "7890-=&*()_+YUIOP{}HJKL:\"|NM<>?yuiop[]hjkl;'\nm,./");
+        
+        util.rateInput(util.cleanChars("my name i1s al23e23x/ hughes and i am proud of myself for developing nonsense"));
+        util.printResults();
+        
         new MainFrame();
     }
 }
