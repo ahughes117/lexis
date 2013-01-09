@@ -6,3 +6,4 @@
 *.ear
 /lexis/nbproject/private/
 /build/
+/dist/

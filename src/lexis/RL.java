@@ -98,6 +98,7 @@ public class RL {
         }
     }
 
+    //TODO: Sort by count
     private void printResults() {
         Iterator it = ratingT.iterator();
 
@@ -105,7 +106,7 @@ public class RL {
         while (it.hasNext()) {
             Rating tmp = (Rating) it.next();
             if (tmp.getCounter() != 0) {
-                results += tmp.getCharacter() + ": " + tmp.getCounter() + "\n";
+                results += tmp.getCharacter() + ": \t" + tmp.getCounter() + "\n";
             }
         }
         results += "\nRight Hand: " + right + "\n";

@@ -6,6 +6,7 @@ package gui;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
 import lexis.RL;
 
 /**
@@ -23,9 +24,9 @@ public class ResultFrame extends GUI {
     public ResultFrame(GUI aPreviousFrame, RL aRl) {
         previousFrame = aPreviousFrame;
         rl = aRl;
-        
+
         initComponents();
-        
+
         this.addWindowListener(new WindowAdapter() {
 
             public void windowClosing(WindowEvent e) {
@@ -33,9 +34,19 @@ public class ResultFrame extends GUI {
                 dispose();
             }
         });
-        
+
+        //setting simple numbers first
         rhClbl.setText(rhClbl.getText() + rl.getRight());
         lhClbl.setText(lhClbl.getText() + rl.getLeft());
+
+        //calculating percentage of each hand, cast because of integers
+        double rp = ((double)rl.getRight() / (rl.getLeft() + rl.getRight())) * 100;
+        double lp = ((double)rl.getLeft() / (rl.getLeft() + rl.getRight())) * 100;
+        DecimalFormat df = new DecimalFormat("#.##");
+        
+        //setting percentages
+        rhPlbl.setText(rhPlbl.getText() + df.format(rp));
+        lhPlbl.setText(lhPlbl.getText() + df.format(lp));
         
         resultArea.setText(rl.getResults());
 
@@ -139,7 +150,7 @@ public class ResultFrame extends GUI {
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Analysis Results"));
 
         resultArea.setColumns(20);
-        resultArea.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        resultArea.setFont(resultArea.getFont());
         resultArea.setLineWrap(true);
         resultArea.setRows(5);
         resultArea.setWrapStyleWord(true);
