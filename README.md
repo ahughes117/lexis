@@ -1,4 +1,4 @@
 lexis
 =====
 
-A small word-lexis-language toy
+A small word-lexis-language analysis toy. Give it a try, no installation, binary on the dist or the store folder.
